@@ -1,0 +1,90 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
+import 'package:srinivas_frontend/view/login_view.dart';
+import 'package:velocity_x/velocity_x.dart';
+
+import '../core/app_colors.dart';
+
+class NewPasswordScreen extends GetView {
+  const NewPasswordScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        toolbarHeight: 8.h,
+        centerTitle: true,
+        title: const Text(
+          'Create New Password',
+          style: TextStyle(
+              color: AppColors.textblack,
+              fontSize: 20,
+              fontWeight: FontWeight.w700),
+        ),
+        backgroundColor: AppColors.white,
+        leading: InkWell(
+          onTap: (() => Get.back()),
+          child: Image.asset('lib/assets/images/Icon_left.png'),
+        ),
+      ),
+      body: Column(
+        children: [
+          2.h.heightBox,
+          // Flexible(
+          //   fit: FlexFit.loose,
+          //   child: const Text(
+          //     'Enter Your Mobile Number to get the verification code',
+          //     textAlign: TextAlign.center,
+          //     style: TextStyle(color: AppColors.textgrey, fontSize: 15),
+          //   ).paddingSymmetric(horizontal: 30),
+          // ),
+          // 4.h.heightBox,
+          const TextField(
+            // inputFormatters: [Max],
+            obscureText: true,
+            cursorHeight: 22,
+            decoration: InputDecoration(
+                hintText: 'New Password',
+                hintStyle: TextStyle(fontSize: 12),
+                contentPadding: EdgeInsets.only(left: 2)),
+          ).paddingSymmetric(horizontal: 15),
+          1.h.heightBox,
+
+          const TextField(
+            // inputFormatters: [Max],
+            obscureText: true,
+            cursorHeight: 22,
+            decoration: InputDecoration(
+                hintText: 'Confirm Password',
+                hintStyle: TextStyle(fontSize: 12),
+                contentPadding: EdgeInsets.only(left: 2)),
+          ).paddingSymmetric(horizontal: 15),
+          12.h.heightBox,
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(AppColors.primary),
+              foregroundColor: MaterialStateProperty.all(AppColors.white),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+              minimumSize: MaterialStateProperty.all(
+                const Size(160, 40),
+              ),
+            ),
+            onPressed: () {
+              Get.to(() => LoginScreen());
+            },
+            child: const Text(
+              'CREATE PASSWORD',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ).w(90.w),
+        ],
+      ),
+    );
+  }
+}
